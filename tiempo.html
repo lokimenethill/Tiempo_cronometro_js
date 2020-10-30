@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     
+    <script>
+        function cronometro(){
+            //configuracion inicial dando una hora inicial esta sera el tiempo apartir el cual calculara cuanto tempo le queda para complir 
+    var horas_inicial=2;
+    var minutos_inicial=12;
+    var segundos_inicial=0;
+    var sumar_horas=2;//cantidad de horas que le daremos
+    var hora_objetivo=horas_inicial+sumar_horas;//se hace establece el tiempo obejtivo para hacer el calculo correspondiente de tiempos
+
+    var tiempo_actual=new Date();//tiempo actual contra el cual se comparara
+    tiempo_act = tiempo_actual.getHours()+":"+tiempo_actual.getMinutes()+":"+tiempo_actual.getSeconds();
+    var construir_hora_objetivo=hora_objetivo+":"+minutos_inicial+":"+segundos_inicial;
+    var hora1 = (construir_hora_objetivo).split(":"),
+    hora2 = (tiempo_act).split(":"),
+    t1 = new Date(),
+    t2 = new Date();
+t1.setHours(hora1[0], hora1[1], hora1[2]);
+t2.setHours(hora2[0], hora2[1], hora2[2]);
+ tiempo
+//se hace el calculo
+t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
+//se verifica si no esta ffuera de tiempo si es asi manda un mensaje diciendo que esta fuera de tiempo
+if(t1.getHours()>2 || (t1.getHours()==0 && t1.getMinutes()==0 && t1.getSeconds()==0)){
+    document.write("fueeerota de tiempo");
+}
+else{
+    m = document.getElementById("minutos");
+    h = document.getElementById("horas");
+    s = document.getElementById("segundos");
+h.innerHTML = "Horas: "+t1.getHours();
+m.innerHTML = "Minutos: "+t1.getMinutes();
+s.innerHTML = "Segundos: "+t1.getSeconds();
+}
+
+}
+setInterval(cronometro,1000*1);
+
+    </script>
+   <p>
+    <div id="horas"></div>
+    <div id="minutos"></div>
+    <div id="segundos"></div>
+</p>
+</body>
+</html>
